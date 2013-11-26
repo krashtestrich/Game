@@ -28,7 +28,13 @@
             <tr>
                 <td>@i.Name</td>
                 <td>@i.Price</td>
-                <td><input type="button" value="Buy" @i.Price <= @Model.PlayerAtShop.Cash ? "disabled="disabled""/></td>
+                <td>
+                    @using (Html.BeginForm("PurchaseEquipment", "Game", new { Name = @i.Name }))
+                    {
+                        <button type="submit" @Model.PlayerAtShop.CanAffordEquipment(i) && @Model.PlayerAtShop.CanEquipEquipment(i)
+                            ?"" : "disabled=/"disabled/"">Buy</button>
+                    }
+                    </td>
             </tr>
         }
         </table>

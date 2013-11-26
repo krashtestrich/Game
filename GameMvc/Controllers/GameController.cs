@@ -52,5 +52,22 @@ namespace GameMvc.Controllers
 
             return View("Shop", s);
         }
+
+        [HttpPost]
+        public ActionResult PurchaseEquipment(string name)
+        {
+            GameLogic.Player p = (GameLogic.Player)Session["Player"];
+            GameLogic.Shop s = new GameLogic.Shop();
+            var e = s.Equipment.First(i => i.Name == name);
+            if (e == null)
+            {
+                // TODO - Exception
+            }
+            p.PurchaseEquipment(e);
+            s.AddPlayerToShop(p);
+            Session["Player"] = p;
+
+            return View("Shop", s);
+        }
     }
 }
