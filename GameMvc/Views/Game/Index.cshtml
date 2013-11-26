@@ -1,0 +1,27 @@
+﻿@model GameMvc.Models.UICharacterModel
+@{
+    ViewBag.Title = "Create Character";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+@using (Html.BeginForm("CreateCharacter", "Game", FormMethod.Post))
+ {
+  <fieldset>
+        <legend>Character creation form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name)
+            </li>            
+        </ol>
+        <input type="submit" value="Register" />
+    </fieldset> }
+</body>
+</html>

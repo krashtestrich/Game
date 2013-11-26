@@ -9,31 +9,20 @@ namespace GameLogic
     public abstract class Equipment
     {
         #region Name
-        private string name;
 
-        public string Name
+        public abstract string Name
         {
-            get
-            {
-                return name;
-            }
+            get;
         }
-
-        public void SetName(string name)
-        {
-            this.name = name;
-        }
+    
         #endregion
 
         #region Equipment Type
         private string equipmentType;
 
-        public string EquipmentType
+        public abstract string EquipmentType
         {
-            get
-            {
-                return this.equipmentType;
-            }
+            get;
         }
 
         #endregion
@@ -43,8 +32,8 @@ namespace GameLogic
 
         public void AddSlotType(Slot slot)
         {
-            this.slots.Add(slot);
-        }
+            slots.Add(slot);
+        } 
 
         public List<Slot> Slots
         {
@@ -53,6 +42,15 @@ namespace GameLogic
                 return slots;
             }
         }
+        #endregion
+
+        #region Price
+        private int price;
+        public abstract int Price
+        {
+            get;
+        }
+
         #endregion
 
         public Equipment()

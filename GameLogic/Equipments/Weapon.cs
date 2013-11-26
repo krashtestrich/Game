@@ -8,7 +8,7 @@ namespace GameLogic.Equipments
 {
     public abstract class Weapon : Equipment
     {
-        public string EquipmentType
+        public override string EquipmentType
         {
             get { return "Weapon"; }
         }

@@ -112,6 +112,13 @@ namespace GameLogic
 
         #endregion
 
+        
+
+        public bool CanPurchaseEquipment(Equipment e)
+        {
+            return false;
+        }
+
         public Character()
         {
             characterEquipment = new List<Equipment>();

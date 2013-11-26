@@ -122,12 +122,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GameWeb\GameWeb.csproj">
-      <Project>{49CF8EC6-FDDB-4F6B-BF5A-797EA0F9B2E7}</Project>
-      <Name>GameWeb</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

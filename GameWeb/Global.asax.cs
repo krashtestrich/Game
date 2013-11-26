@@ -14,6 +14,8 @@ namespace GameWeb
 
     public class MvcApplication : System.Web.HttpApplication
     {
+        private GameLogic.Arena _arena = null;
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -23,6 +25,7 @@ namespace GameWeb
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+            _arena = new GameLogic.Arena();
         }
     }
 }

@@ -1,0 +1,26 @@
+﻿@model GameLogic.Player
+@{
+    ViewBag.Title = "Character Screen";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Character</title>
+</head>
+<body>
+    <div>
+       @Html.LabelFor(m => m.Name)
+       @Html.ValueFor(m => m.Name)
+
+        @Html.LabelFor(m => m.Cash)
+        @Html.ValueFor(m => m.Cash)
+    </div>
+    <div>
+        @Html.ActionLink("Shop", "GoToShop", "Game")
+        @Html.ActionLink("Arena", "GoToArena", "Game");
+    </div>
+</body>
+</html>

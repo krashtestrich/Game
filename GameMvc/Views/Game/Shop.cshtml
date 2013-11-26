@@ -1,0 +1,37 @@
+﻿@model GameLogic.Shop
+@{
+    ViewBag.Title = "Shop";
+    var weapons = Model.Equipment.FindAll(i => i.EquipmentType == "Weapon");
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Shop</title>
+</head>
+<body>
+    <div>
+        Welcome to the Shop!
+    </div>
+    <div>
+        You have @Html.ValueFor(m => m.PlayerAtShop.Cash) to spend.
+    </div>
+    <div>Weapons
+        <table>
+            <tr>
+                <td>Weapon Name</td><td>Weapon Cost</td><td>Buy</td>
+            </tr>
+        @foreach (GameLogic.Equipment i in weapons)
+        {
+            <tr>
+                <td>@i.Name</td>
+                <td>@i.Price</td>
+                <td><input type="button" value="Buy" @i.Price <= @Model.PlayerAtShop.Cash ? "disabled="disabled""/></td>
+            </tr>
+        }
+        </table>
+    </div>
+</body>
+</html>

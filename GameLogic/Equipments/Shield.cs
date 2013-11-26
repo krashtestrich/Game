@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace GameLogic.Equipments
 {
-    public class Shield : Equipment
+    public abstract class Shield : Equipment
     {
-        public string EquipmentType
+        public override string EquipmentType
         {
             get { return "Shield"; }
         }
+
     }
 }

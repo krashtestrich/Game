@@ -22,9 +22,6 @@ namespace GameUnitTest
         {
             var c = new Character();
             var e = new Sword();
-            e.SetName("Test Equip");
-            e.AddSlotType(new Hand());
-            e.AddSlotType(new Hand());
             Assert.IsTrue(c.CanEquipEquipment(e));
         }
 
@@ -33,7 +30,6 @@ namespace GameUnitTest
         {
             var c = new Character();
             var e = new Sword();
-            e.SetName("Test Equip");
             e.AddSlotType(new Hand());
             e.AddSlotType(new Hand());
             e.AddSlotType(new Hand());
@@ -45,8 +41,6 @@ namespace GameUnitTest
         {
             var c = new Character();
             var e = new Sword();
-            e.SetName("Test Equip");
-            e.AddSlotType(new Hand());
             c.EquipEquipment(e);
             Assert.IsTrue(c.CharacterEquipment.Exists(x => x == e));
         }
@@ -57,8 +51,6 @@ namespace GameUnitTest
         {
             var c = new Character();
             var e = new Sword();
-            e.SetName("Test Equip");
-            e.AddSlotType(new Hand());
             e.AddSlotType(new Hand());
             e.AddSlotType(new Hand());
             c.EquipEquipment(e);
