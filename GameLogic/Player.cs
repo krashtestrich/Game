@@ -45,6 +45,12 @@ namespace GameLogic
                 throw new Exception("Player tried to purchase unaffordable or unwearable Equipment.");
             }
         }
+
+        public void SellEquipment(Equipment e)
+        {
+            cash += (int)Math.Round(e.Price * 0.75, MidpointRounding.ToEven);
+            UnEquipEquipment(e);
+        }
         #endregion
 
         public Player()

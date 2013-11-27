@@ -11,16 +11,37 @@
     <title>Character</title>
 </head>
 <body>
+    <h2>Character Details</h2>
     <div>
-       @Html.LabelFor(m => m.Name)
-       @Html.ValueFor(m => m.Name)
+        @Html.LabelFor(m => m.Name)
+        @Html.ValueFor(m => m.Name)
 
         @Html.LabelFor(m => m.Cash)
         @Html.ValueFor(m => m.Cash)
+
+        @Html.LabelFor(m => m.Health)
+        @Html.ValueFor(m => m.Health)
     </div>
     <div>
-        @Html.ActionLink("Shop", "GoToShop", "Game")
-        @Html.ActionLink("Arena", "GoToArena", "Game");
+        <h2>Current Loadout</h2>
+        <table>
+            <tr>
+                <td>Slot Type</td>
+                <td>Equipment</td>
+            </tr>
+            @foreach (GameLogic.Slots.Hand h in @Model.Slots)
+            {
+                <tr>
+                    <td>@h.SlotType</td>
+                    <td>@h.SlotEquipmentName</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div>
+        @Html.ActionLink("Get geared up at the shop!", "Shop", "Game")
+        ||
+        @Html.ActionLink("Wanna fight? Head to the arena!", "Arena", "Game")
     </div>
 </body>
 </html>

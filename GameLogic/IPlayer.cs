@@ -15,5 +15,6 @@ namespace GameLogic
         void AddCash(int amount);
         bool CanAffordEquipment(Equipment e);
         void PurchaseEquipment(Equipment e);
+        void SellEquipment(Equipment e);
     }
 }

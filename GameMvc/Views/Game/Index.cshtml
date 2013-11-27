@@ -11,17 +11,20 @@
     <title>Index</title>
 </head>
 <body>
+ <h2>Welcome! Create your character to continue...</h2>
 @using (Html.BeginForm("CreateCharacter", "Game", FormMethod.Post))
  {
+    @Html.ValidationSummary(true)
   <fieldset>
-        <legend>Character creation form</legend>
+        <legend>Enter details</legend>
         <ol>
             <li>
                 @Html.LabelFor(m => m.Name)
-                @Html.TextBoxFor(m => m.Name)
+                @Html.EditorFor(m => m.Name)
+                @Html.ValidationMessageFor(m => m.Name)
             </li>            
         </ol>
-        <input type="submit" value="Register" />
+        <input type="submit" value="Create" />
     </fieldset> }
 </body>
 </html>

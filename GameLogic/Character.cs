@@ -93,12 +93,21 @@ namespace GameLogic
                 this.characterEquipment.Add(equipment);
                 foreach (var s in equipment.Slots)
                 {
-                    this.slots.Find(sf => sf.SlotFree && sf.SlotType == s.SlotType).SetSlotFree(false);
+                    this.slots.Find(sf => sf.SlotFree && sf.SlotType == s.SlotType).SetSlotFree(false, equipment.Name);
                 }
             }
             else
             {
                 throw new Exception();
+            }
+        }
+
+        public void UnEquipEquipment(Equipment equipment)
+        {
+            this.characterEquipment.Remove(equipment);
+            foreach (var s in equipment.Slots)
+            {
+                this.slots.Find(sf => !sf.SlotFree && sf.SlotType == s.SlotType).SetSlotFree(true, null);
             }
         }
 

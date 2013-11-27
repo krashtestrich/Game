@@ -41,6 +41,7 @@ namespace GameLogic
 
         bool CanEquipEquipment(Equipment equipment);
         void EquipEquipment(Equipment equipment);
+        void UnEquipEquipment(Equipment equipment);
         #endregion
     }
 }

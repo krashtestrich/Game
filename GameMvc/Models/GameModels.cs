@@ -8,7 +8,7 @@ namespace GameMvc.Models
 {
     public class UICharacterModel
     {
-        [Required]
+        [Required(ErrorMessage="Name is required")]
         [Display(Name = "Character name")]
         public string Name
         { get; set; }

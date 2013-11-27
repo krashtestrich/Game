@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action.cs" />
     <Compile Include="Arena.cs" />
     <Compile Include="ArenaFloorTile.cs" />
     <Compile Include="Character.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="Equipments\Weapons\BigSword.cs" />
     <Compile Include="Equipments\Weapons\Sword.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="IAction.cs" />
     <Compile Include="ICharacter.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="IShop.cs" />
@@ -57,6 +59,9 @@
     <Compile Include="Shop.cs" />
     <Compile Include="Slot.cs" />
     <Compile Include="Slots\Hand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Actions\Attacks\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

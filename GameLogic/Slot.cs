@@ -19,10 +19,22 @@ namespace GameLogic
             }            
         }
 
-        public void SetSlotFree(bool free)
+        public void SetSlotFree(bool free, string equipName)
         {
             this.slotFree = free;
+            this.slotEquipmentName = equipName;
         }
+
+        private string slotEquipmentName;
+
+        public string SlotEquipmentName
+        {
+            get
+            {
+                return slotEquipmentName;
+            }
+        }
+
         #endregion
 
         #region Slot Type

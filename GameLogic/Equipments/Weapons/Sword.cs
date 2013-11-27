@@ -37,7 +37,7 @@ namespace GameLogic.Equipments.Weapons
 
         public override int Price
         {
-            get { return 50;  }
+            get { return 60;  }
         }
 
         public Sword()

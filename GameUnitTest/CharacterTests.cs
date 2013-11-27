@@ -37,12 +37,21 @@ namespace GameUnitTest
         }
 
         [TestMethod]
-        public void EquipEquipmentWorks()
+        public void EquipEquipmentAddsEquipmentToCharactersEquipment()
         {
             var c = new Character();
             var e = new Sword();
             c.EquipEquipment(e);
             Assert.IsTrue(c.CharacterEquipment.Exists(x => x == e));
+        }
+
+        [TestMethod]
+        public void EquipEquipmentUpdatesCharacterEquipmentSlotsToUsed()
+        {
+            var c = new Character();
+            var e = new Sword();
+            c.EquipEquipment(e);
+            Assert.IsTrue(c.Slots.Exists(x => !x.SlotFree && x.SlotEquipmentName == e.Name));
         }
 
         [TestMethod]
@@ -54,6 +63,26 @@ namespace GameUnitTest
             e.AddSlotType(new Hand());
             e.AddSlotType(new Hand());
             c.EquipEquipment(e);
+        }
+
+        [TestMethod]
+        public void UnEquipEquipmentRemovesEquipmentFromCharactersEquipment()
+        {
+            var c = new Character();
+            var e = new Sword();
+            c.EquipEquipment(e);
+            c.UnEquipEquipment(e);
+            Assert.IsFalse(c.CharacterEquipment.Exists(x => x == e));
+        }
+
+        [TestMethod]
+        public void UnEquipEquipmentFreesCharactersEquipmentSlots()
+        {
+            var c = new Character();
+            var e = new Sword();
+            c.EquipEquipment(e);
+            c.UnEquipEquipment(e);
+            Assert.IsFalse(c.Slots.Exists(x => !x.SlotFree || x.SlotEquipmentName == e.Name));
         }
     }
 }

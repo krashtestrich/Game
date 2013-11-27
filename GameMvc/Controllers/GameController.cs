@@ -14,28 +14,42 @@ namespace GameMvc.Controllers
 
         public ActionResult Index()
         {
-            GameLogic.Player p = new GameLogic.Player();
-            Session["Player"] = p;
             return View();
         }
 
         [HttpPost]
         public ActionResult CreateCharacter(UICharacterModel model)
         {
-            GameLogic.Player p = Session["Player"] == null ? new GameLogic.Player() : (GameLogic.Player)Session["Player"];   
-            if (ModelState.IsValid)
-            {             
-                p.SetName(model.Name);
-                Session["Player"] = p;
+            if (!ModelState.IsValid)
+            {
+                return View("Index", model);
             }
-
-            // If we got this far, something failed, redisplay form
+            GameLogic.Player p = new GameLogic.Player();
+            p.SetName(model.Name);
+            Session["Player"] = p;
             return View("Character", p);
         }
 
-        public ActionResult GoToArena()
+        public ActionResult Character()
         {
             GameLogic.Player p = (GameLogic.Player)Session["Player"];
+            if (p == null)
+            {
+                ModelState.AddModelError(string.Empty, "You must create a character first.");
+                return View("Index");
+            }            
+            return View("Character", p);            
+        }
+
+        public ActionResult Arena()
+        {
+            GameLogic.Player p = (GameLogic.Player)Session["Player"];
+            if (p == null)
+            {
+                ModelState.AddModelError(string.Empty, "You must create a character first.");
+                return View("Index");
+            }
+
             GameLogic.Arena a = new GameLogic.Arena();
             a.BuildArenaFloor(5);
             a.AddCharacterToArena(p);
@@ -44,9 +58,14 @@ namespace GameMvc.Controllers
             return View("Arena", a);
         }
 
-        public ActionResult GoToShop()
+        public ActionResult Shop()
         {
             GameLogic.Player p = (GameLogic.Player)Session["Player"];
+            if (p == null)
+            {
+                ModelState.AddModelError(string.Empty, "You must create a character first.");
+                return View("Index");
+            }    
             GameLogic.Shop s = new GameLogic.Shop();
             s.AddPlayerToShop(p);
 
@@ -64,6 +83,23 @@ namespace GameMvc.Controllers
                 // TODO - Exception
             }
             p.PurchaseEquipment(e);
+            s.AddPlayerToShop(p);
+            Session["Player"] = p;
+
+            return View("Shop", s);
+        }
+
+        [HttpPost]
+        public ActionResult SellEquipment(string name)
+        {
+            GameLogic.Player p = (GameLogic.Player)Session["Player"];
+            GameLogic.Shop s = new GameLogic.Shop();
+            var e = p.CharacterEquipment.First(i => i.Name == name);
+            if (e == null)
+            {
+                // TODO - Exception
+            }
+            p.SellEquipment(e);
             s.AddPlayerToShop(p);
             Session["Player"] = p;
 
