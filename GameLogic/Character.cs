@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameLogic.Arena;
 using GameLogic.Slots;
 
 namespace GameLogic
@@ -69,6 +70,21 @@ namespace GameLogic
         }
         #endregion
 
+        #region Position
+        private ArenaFloorPosition playerLocation;
+        public ArenaFloorPosition PlayerLocation
+        {
+            get
+            {
+                return playerLocation;
+            }
+        }
+        public void SetPlayerLocation(int x, int y)
+        {
+            playerLocation = new ArenaFloorPosition(x, y);
+        }
+        #endregion
+
         #region Equipment
         private List<Equipment> characterEquipment;
 
@@ -120,7 +136,6 @@ namespace GameLogic
         }
 
         #endregion
-
         
 
         public bool CanPurchaseEquipment(Equipment e)

@@ -8,12 +8,12 @@ namespace GameLogic
 {
     public class Game
     {
-        protected Arena arena;
+        protected Arena.Arena arena;
         protected Player player;
 
         protected void CreateArena()
         {
-            arena = new Arena();
+            arena = new Arena.Arena();
             player = new Player();
         }
     }

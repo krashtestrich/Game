@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameLogic
+namespace GameLogic.Arena
 {
     public class Arena
     {
