@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameLogic.Actions;
 
 namespace GameLogic
 {
     public abstract class Equipment
     {
+        internal static Random r;
+
         #region Name
 
         public abstract string Name
@@ -53,9 +56,17 @@ namespace GameLogic
 
         #endregion
 
+        #region Actions
+        public abstract List<IAction> Actions
+        {
+            get;
+        }
+        #endregion
+
         public Equipment()
         {
             slots = new List<Slot>();
+            r = new Random();
         }
     }
 }

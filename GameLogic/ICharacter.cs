@@ -43,5 +43,11 @@ namespace GameLogic
         void EquipEquipment(Equipment equipment);
         void UnEquipEquipment(Equipment equipment);
         #endregion
+
+        #region Actions
+        List<GameLogic.Actions.IAction> AvailableActions
+        { get; }
+
+        #endregion        
     }
 }

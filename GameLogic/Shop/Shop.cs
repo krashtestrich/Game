@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using GameLogic.Equipments;
 using GameLogic.Equipments.Weapons;
 
-namespace GameLogic
+namespace GameLogic.Shop
 {
     public class Shop : IShop
     {
@@ -43,6 +43,7 @@ namespace GameLogic
             playerAtShop = p;
         }
         #endregion
+
         public Shop()
         {
             equipment = new List<Equipment>();

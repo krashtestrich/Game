@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameLogic
+namespace GameLogic.Shop
 {
-    public interface IAction
+    public interface IShop
     {
-        bool CharacterCanPerformAction(Character c);
+
     }
 }

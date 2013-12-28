@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameLogic.Actions;
 using GameLogic.Arena;
 using GameLogic.Slots;
+using GameLogic.Actions.Movements;
+using MoreLinq;
 
 namespace GameLogic
 {
@@ -38,17 +41,17 @@ namespace GameLogic
 
         public void SetHealth(int health)
         {
-            this.health = health;
+            health = health;
         }
 
         public void LoseHealth(int amount)
         {
-            this.health = health - amount;
+            health = health - amount;
         }
 
         public void GainHealth(int amount)
         {
-            this.health = health + amount;
+            health = health + amount;
         }
 
         #endregion
@@ -71,17 +74,17 @@ namespace GameLogic
         #endregion
 
         #region Position
-        private ArenaFloorPosition playerLocation;
-        public ArenaFloorPosition PlayerLocation
+        private ArenaFloorPosition characterLocation;
+        public ArenaFloorPosition CharacterLocation
         {
             get
             {
-                return playerLocation;
+                return characterLocation;
             }
         }
-        public void SetPlayerLocation(int x, int y)
+        public void SetCharacterLocation(int x, int y)
         {
-            playerLocation = new ArenaFloorPosition(x, y);
+            characterLocation = new ArenaFloorPosition(x, y);
         }
         #endregion
 
@@ -94,7 +97,7 @@ namespace GameLogic
 
             foreach (var e in uniqueSlots)
             {
-                if (this.slots.Where(i => i.SlotFree && i.SlotType == e.SlotType).Count() < equipment.Slots.Select(x => x.SlotType == e.SlotType).Count())
+                if (slots.Count(i => i.SlotFree && i.SlotType == e.SlotType) < equipment.Slots.Select(x => x.SlotType == e.SlotType).Count())
                 {
                     return false;
                 }
@@ -135,13 +138,29 @@ namespace GameLogic
             }
         }
 
-        #endregion
-        
+        #endregion    
 
-        public bool CanPurchaseEquipment(Equipment e)
+        #region Actions
+        public List<IAction> AvailableActions
         {
-            return false;
+            get
+            {
+                var aa = new List<IAction>()
+                {
+                    new Run()
+                };
+
+                aa.AddRange(CharacterEquipment.SelectMany(i => i.Actions));
+                return aa.DistinctBy(i => i.Name).ToList();
+            }
         }
+
+        public void PerformAction(IAction a)
+        {
+            
+        }
+
+        #endregion
 
         public Character()
         {
@@ -149,10 +168,10 @@ namespace GameLogic
 
             slots = new List<Slot>();
 
-            Hand h1 = new Hand();
+            var h1 = new Hand();
             slots.Add(h1);
 
-            Hand h2 = new Hand();
+            var h2 = new Hand();
             slots.Add(h2);
         }
     }

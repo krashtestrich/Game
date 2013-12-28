@@ -11,14 +11,6 @@ namespace GameLogic.Equipments.Weapons
 {
     public sealed class Sword : Weapon
     {
-        public override string WeaponType
-        {
-            get
-            {
-                return "Sword";
-            }
-        }
-
         public override string Name
         {
             get
@@ -40,6 +32,17 @@ namespace GameLogic.Equipments.Weapons
         public override int Price
         {
             get { return 60;  }
+        }
+
+        public override List<IAction> Actions
+        {
+            get
+            {
+                return new List<IAction>()
+                    {
+                        new Swing()
+                    };
+            }
         }
 
         public Sword()

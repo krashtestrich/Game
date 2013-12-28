@@ -10,7 +10,6 @@ namespace GameLogic.Equipments
 {
     public abstract class Weapon : Equipment
     {
-        private AttackType attackType;
         public override string EquipmentType
         {
             get {                             
@@ -18,11 +17,12 @@ namespace GameLogic.Equipments
             }
         }
 
-        #region Abstract Properties
-        public abstract string WeaponType
+        public virtual int GetDamage()
         {
-            get;           
+            return BaseDamage + r.Next(0, BonusDamage);
         }
+
+        #region Abstract Properties
         public abstract int BaseDamage
         {
             get;
@@ -32,6 +32,7 @@ namespace GameLogic.Equipments
         {
            get;
         }
+
         #endregion
     }
 }

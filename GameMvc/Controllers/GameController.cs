@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GameLogic;
+using GameLogic.Arena;
+using GameLogic.Shop;
 using GameMvc.Models;
 
 namespace GameMvc.Controllers
@@ -50,7 +53,7 @@ namespace GameMvc.Controllers
                 return View("Index");
             }
 
-            GameLogic.Arena a = new GameLogic.Arena();
+            Arena a = new Arena();
             a.BuildArenaFloor(5);
             a.AddCharacterToArena(p);
             Session["Arena"] = a;
@@ -66,7 +69,7 @@ namespace GameMvc.Controllers
                 ModelState.AddModelError(string.Empty, "You must create a character first.");
                 return View("Index");
             }    
-            GameLogic.Shop s = new GameLogic.Shop();
+            Shop s = new Shop();
             s.AddPlayerToShop(p);
 
             return View("Shop", s);
@@ -75,8 +78,8 @@ namespace GameMvc.Controllers
         [HttpPost]
         public ActionResult PurchaseEquipment(string name)
         {
-            GameLogic.Player p = (GameLogic.Player)Session["Player"];
-            GameLogic.Shop s = new GameLogic.Shop();
+            Player p = (Player)Session["Player"];
+            Shop s = new Shop();
             var e = s.Equipment.First(i => i.Name == name);
             if (e == null)
             {
@@ -92,8 +95,8 @@ namespace GameMvc.Controllers
         [HttpPost]
         public ActionResult SellEquipment(string name)
         {
-            GameLogic.Player p = (GameLogic.Player)Session["Player"];
-            GameLogic.Shop s = new GameLogic.Shop();
+            Player p = (Player)Session["Player"];
+            Shop s = new Shop();
             var e = p.CharacterEquipment.First(i => i.Name == name);
             if (e == null)
             {

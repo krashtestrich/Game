@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GameLogic
 {
-    public abstract class Action
+    public class Bot : Character
     {
-        public abstract bool CharacterCanPerformAction(Character c);
+
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameLogic
 {
-    public class Slot
+    public abstract class Slot
     {
         #region Slot Free
         private bool slotFree;        
@@ -38,20 +38,16 @@ namespace GameLogic
         #endregion
 
         #region Slot Type
-        private string slotType;
 
-        public string SlotType
+        public abstract string SlotType
         {
-            get
-            {
-                return this.slotType;
-            }
+            get;
         }
         #endregion
 
         public Slot()
         {
-            this.slotFree = true;
+            slotFree = true;
         }
     }
 }

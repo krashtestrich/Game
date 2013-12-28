@@ -10,15 +10,7 @@ using GameLogic.Slots;
 namespace GameLogic.Equipments.Weapons
 {
     public sealed class BigSword : Weapon
-    {
-        public override string WeaponType
-        {
-            get
-            {
-                return "Big Sword";
-            }
-        }
-
+    {     
         public override string Name
         {
             get
@@ -40,6 +32,17 @@ namespace GameLogic.Equipments.Weapons
         public override int Price
         {
             get { return 75; }
+        }
+
+        public override List<IAction> Actions
+        {
+            get
+            {
+                return new List<IAction>()
+                    {
+                        new Swing()
+                    };
+            }
         }
 
         public BigSword()

@@ -8,7 +8,7 @@ namespace GameLogic.Slots
 {
     public class Hand : Slot
     {
-        public string SlotType
+        public override string SlotType
         {
             get { return "Hand";  }
         }
