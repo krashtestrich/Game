@@ -160,5 +160,11 @@ namespace GameUnitTest
             var dmg = w.GetDamage();
             Assert.IsTrue((w.BaseDamage + w.BonusDamage) >= dmg && dmg >= w.BaseDamage);
         }
+
+        [TestMethod]
+        public void AttackActionDamageGetsCalculated()
+        {
+            
+        }
     }
 }

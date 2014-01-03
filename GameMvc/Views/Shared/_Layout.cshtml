@@ -6,7 +6,12 @@
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/jqueryplugincss")
         @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+@*        @Scripts.Render("~/bundles/jqueryplugins")*@
+        @Scripts.Render("~/bundles/game")
+        @RenderSection("scripts", required: false)
     </head>
     <body>
         <header>
@@ -27,6 +32,7 @@
                     </nav>
                 </div>
             </div>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.cluetip.min.js")"></script>
         </header>
         <div id="body">
             @RenderSection("featured", required: false)
@@ -41,8 +47,5 @@
                 </div>
             </div>
         </footer>
-
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
     </body>
 </html>

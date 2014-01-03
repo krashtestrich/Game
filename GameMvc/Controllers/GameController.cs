@@ -27,7 +27,7 @@ namespace GameMvc.Controllers
             {
                 return View("Index", model);
             }
-            GameLogic.Player p = new GameLogic.Player();
+            var p = new Player();
             p.SetName(model.Name);
             Session["Player"] = p;
             return View("Character", p);
@@ -35,7 +35,7 @@ namespace GameMvc.Controllers
 
         public ActionResult Character()
         {
-            GameLogic.Player p = (GameLogic.Player)Session["Player"];
+            var p = (Player)Session["Player"];
             if (p == null)
             {
                 ModelState.AddModelError(string.Empty, "You must create a character first.");
@@ -46,16 +46,16 @@ namespace GameMvc.Controllers
 
         public ActionResult Arena()
         {
-            GameLogic.Player p = (GameLogic.Player)Session["Player"];
+            var p = (Player)Session["Player"];
             if (p == null)
             {
                 ModelState.AddModelError(string.Empty, "You must create a character first.");
                 return View("Index");
             }
 
-            Arena a = new Arena();
+            var a = new Arena();
             a.BuildArenaFloor(5);
-            a.AddCharacterToArena(p);
+            a.AddPlayerToArena(p);
             Session["Arena"] = a;
 
             return View("Arena", a);
@@ -63,13 +63,13 @@ namespace GameMvc.Controllers
 
         public ActionResult Shop()
         {
-            GameLogic.Player p = (GameLogic.Player)Session["Player"];
+            var p = (Player)Session["Player"];
             if (p == null)
             {
                 ModelState.AddModelError(string.Empty, "You must create a character first.");
                 return View("Index");
             }    
-            Shop s = new Shop();
+            var s = new Shop();
             s.AddPlayerToShop(p);
 
             return View("Shop", s);
@@ -78,8 +78,8 @@ namespace GameMvc.Controllers
         [HttpPost]
         public ActionResult PurchaseEquipment(string name)
         {
-            Player p = (Player)Session["Player"];
-            Shop s = new Shop();
+            var p = (Player)Session["Player"];
+            var s = new Shop();
             var e = s.Equipment.First(i => i.Name == name);
             if (e == null)
             {
@@ -95,8 +95,8 @@ namespace GameMvc.Controllers
         [HttpPost]
         public ActionResult SellEquipment(string name)
         {
-            Player p = (Player)Session["Player"];
-            Shop s = new Shop();
+            var p = (Player)Session["Player"];
+            var s = new Shop();
             var e = p.CharacterEquipment.First(i => i.Name == name);
             if (e == null)
             {

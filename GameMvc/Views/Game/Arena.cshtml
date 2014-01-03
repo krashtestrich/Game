@@ -1,4 +1,5 @@
-﻿@model GameLogic.Arena
+﻿@using GameLogic.Arena
+@model GameLogic.Arena.Arena
 @{
     ViewBag.Title = "Arena";
 }
@@ -12,5 +13,18 @@
 </head>
 <body>
     <h2>Welcome to the Arena!</h2>
+    <div id="arenaFloor">
+    @{
+        for (var i = 0; i < Model.ArenaFloor.GetLength(0); i++)
+        {
+            <div class="arenaFloorRow">
+                @for (var j = 0; j < Model.ArenaFloor.GetLength(1); j++)
+                {
+                    <div class="arenaFloorTile">TILE</div>
+                }
+            </div>
+        }
+    }
+    </div>
 </body>
 </html>

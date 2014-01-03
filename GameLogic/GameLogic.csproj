@@ -48,6 +48,7 @@
     <Compile Include="Arena\ArenaFloorTile.cs" />
     <Compile Include="Arena\ArenaFloorPosition.cs" />
     <Compile Include="Arena\ArenaHelper.cs" />
+    <Compile Include="Battle\Battle.cs" />
     <Compile Include="Bot.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="CharacterFactory.cs" />

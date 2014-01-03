@@ -37,5 +37,10 @@ namespace GameLogic.Actions
             return distance <= MaxRange
                 && distance >= MinRange;
         }
+
+        public override void Perform(Character s, Character t)
+        {
+            t.LoseHealth();
+        }
     } 
 }

@@ -8,8 +8,14 @@ namespace GameMvc
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/game").Include(
+                "~/Scripts/Game/_character.js"));
+
+            //bundles.Add(new ScriptBundle("~/bundles/jqueryplugins").Include("~/Scripts/jquery.cluetip.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery.cluetip.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
@@ -23,7 +29,11 @@ namespace GameMvc
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css").Include("~/Content/Game.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css",
+                                                                 "~/Content/Game.css"));
+
+            bundles.Add(new StyleBundle("~/Content/jqueryplugincss").Include(
+                "~/Content/jquery.cluetip.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

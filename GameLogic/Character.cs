@@ -162,6 +162,12 @@ namespace GameLogic
 
         #endregion
 
+        #region Battle
+
+        public List<IAction> ChosenActions { get; set; }
+
+        #endregion
+
         public Character()
         {
             characterEquipment = new List<Equipment>();
@@ -173,6 +179,8 @@ namespace GameLogic
 
             var h2 = new Hand();
             slots.Add(h2);
+
+            ChosenActions = new List<IAction>();
         }
     }
 }
